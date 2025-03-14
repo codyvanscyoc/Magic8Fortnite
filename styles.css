@@ -1,0 +1,184 @@
+body {
+    background: radial-gradient(circle, #e60000 0%, #003087 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.spider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Spiderweb strands */
+.spider-container::before,
+.spider-container::after,
+.spider-container > .web-radial-1,
+.spider-container > .web-radial-2,
+.spider-container > .web-radial-3,
+.spider-container > .web-radial-4,
+.spider-container > .web-radial-5,
+.spider-container > .web-radial-6,
+.spider-container > .web-horizontal-1,
+.spider-container > .web-horizontal-2,
+.spider-container > .web-horizontal-3,
+.spider-container > .web-horizontal-4,
+.spider-container > .web-horizontal-5 {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 0;
+}
+
+/* Radial webs (like spokes) */
+.spider-container::before { /* Vertical */
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.spider-container::after { /* Horizontal */
+    width: 100vw;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.web-radial-1 {
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: rotate(30deg) translateX(-50%);
+}
+.web-radial-2 {
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: rotate(-30deg) translateX(-50%);
+}
+.web-radial-3 {
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: rotate(60deg) translateX(-50%);
+}
+.web-radial-4 {
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: rotate(-60deg) translateX(-50%);
+}
+.web-radial-5 {
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: rotate(45deg) translateX(-50%);
+}
+.web-radial-6 {
+    width: 2px;
+    height: 100vh;
+    left: 50%;
+    transform: rotate(-45deg) translateX(-50%);
+}
+
+/* Horizontal webs (like rings) */
+.web-horizontal-1 {
+    width: 100vw;
+    height: 2px;
+    top: 20%;
+}
+.web-horizontal-2 {
+    width: 100vw;
+    height: 2px;
+    top: 35%;
+}
+.web-horizontal-3 {
+    width: 100vw;
+    height: 2px;
+    top: 65%;
+}
+.web-horizontal-4 {
+    width: 100vw;
+    height: 2px;
+    top: 80%;
+}
+.web-horizontal-5 {
+    width: 80vw;
+    height: 2px;
+    left: 10%;
+    top: 50%;
+}
+
+.eight-ball {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at 30% 30%, #333, #000 70%); /* 3D gradient */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), /* Outer shadow */
+                inset -5px -5px 15px rgba(0, 0, 0, 0.8), /* Inner shadow */
+                inset 5px 5px 15px rgba(255, 255, 255, 0.2); /* Highlight */
+}
+
+.answer-screen {
+    width: 180px;
+    height: 110px;
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.8), rgba(0, 20, 60, 0.6));
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    color: white;
+}
+
+.shake {
+    animation: shake 0.7s;
+}
+
+.shake ~ .web-radial-1,
+.shake ~ .web-radial-2,
+.shake ~ .web-radial-3,
+.shake ~ .web-radial-4,
+.shake ~ .web-radial-5,
+.shake ~ .web-radial-6,
+.shake ~ .web-horizontal-1,
+.shake ~ .web-horizontal-2,
+.shake ~ .web-horizontal-3,
+.shake ~ .web-horizontal-4,
+.shake ~ .web-horizontal-5 {
+    animation: web-wiggle 0.7s;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(-20px, 10px) rotate(-2deg); }
+    40% { transform: translate(20px, -10px) rotate(2deg); }
+    60% { transform: translate(-15px, 8px) rotate(-1deg); }
+    80% { transform: translate(15px, -8px) rotate(1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes web-wiggle {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(-2px, 2px); }
+    60% { transform: translate(1px, -1px); }
+    80% { transform: translate(-1px, 1px); }
+    100% { transform: translate(0, 0); }
+}
